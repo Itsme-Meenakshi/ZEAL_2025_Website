@@ -29,18 +29,20 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
-        
-        {/* Title */}
+        {/* Title – ZEAL gradient like poster */}
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="font-display text-7xl md:text-9xl font-black tracking-wider mb-2 text-glow mt-[50px]"
+          className="font-display text-7xl md:text-9xl font-black tracking-[0.25em] mb-2 mt-[50px] uppercase"
           style={{
             background:
-              'linear-gradient(180deg, hsl(var(--foreground)) 0%, hsl(var(--primary)) 100%)',
+              'linear-gradient(180deg, #ffffff 0%, #f9edf5 40%, #ff2d7a 100%)',
             WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textRendering: 'geometricPrecision',
+            filter: 'drop-shadow(0 0 12px rgba(0,0,0,0.75))',
           }}
         >
           ZEAL
@@ -58,23 +60,29 @@ const HeroSection = () => {
           </span>
         </motion.p>
 
-        {/* Date & Venue */}
+        {/* Date & Venue – pill */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-10"
+          className="flex items-center justify-center mb-10"
         >
-          <div className="flex items-center gap-2 text-secondary drop-shadow-[0_0_6px_rgba(255,255,255,0.5)]">
-            <Calendar className="w-5 h-5" />
-            <span className="font-body text-lg">January 5th, 2025</span>
-          </div>
-          <div className="hidden sm:block w-px h-6 bg-border" />
-          <div className="flex items-center gap-2 text-secondary drop-shadow-[0_0_6px_rgba(255,255,255,0.5)]">
-            <MapPin className="w-5 h-5" />
-            <span className="font-body text-lg">
-              Muthoot Institute of Technology & Science
-            </span>
+          <div className="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-black/65 backdrop-blur-xl border border-white/25 shadow-[0_0_35px_rgba(0,0,0,0.9)] text-white">
+            <div className="flex items-center gap-2">
+              <Calendar className="w-5 h-5 text-pink-400" />
+              <span className="font-body text-base md:text-lg tracking-wide">
+                January 5th, 2025
+              </span>
+            </div>
+
+            <div className="w-px h-6 bg-white/30 hidden sm:block" />
+
+            <div className="flex items-center gap-2">
+              <MapPin className="w-5 h-5 text-pink-400" />
+              <span className="font-body text-base md:text-lg tracking-wide">
+                Muthoot Institute of Technology &amp; Science
+              </span>
+            </div>
           </div>
         </motion.div>
 
@@ -85,8 +93,6 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-
-          {/* REGISTER BUTTON 🔗 Google Form */}
           <a
             href="https://forms.gle/XZGnDEGJXu9vip1p6"
             target="_blank"
@@ -103,7 +109,6 @@ const HeroSection = () => {
             </Button>
           </a>
 
-          {/* Scroll to Tracks */}
           <Button
             variant="outline"
             size="xl"
@@ -127,17 +132,26 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Logos */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="flex flex-wrap items-center justify-center gap-20 mt-[100px]"
-        >
-          <img src={wieLogo} className="h-16 w-auto object-contain" />
-          <img src={ieeeLogo} className="h-16 w-auto object-contain" />
-          <img src={mitsLogo} className="h-16 w-auto object-contain" />
-          <img src={sponsorLogo} className="h-16 w-auto object-contain" />
-        </motion.div>
+        {/* Logos – equal size */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.1 }}
+  className="flex flex-wrap items-center justify-center gap-16 mt-[100px]"
+>
+  {[wieLogo, ieeeLogo, mitsLogo, sponsorLogo].map((logo, i) => (
+    <div
+      key={i}
+      className="w-28 h-16 flex items-center justify-center"
+    >
+      <img
+        src={logo}
+        className="max-h-full max-w-full object-contain"
+      />
+    </div>
+  ))}
+</motion.div>
+
       </div>
     </section>
   );

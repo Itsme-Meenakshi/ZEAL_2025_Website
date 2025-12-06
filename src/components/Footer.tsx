@@ -12,7 +12,7 @@ const Footer = () => {
           className="flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="text-center md:text-left">
-            <h3 className="font-display text-2xl text-foreground mb-1">ZEAL 2025</h3>
+            <h3 className="font-display text-2xl text-foreground mb-1">ZEAL </h3>
             <p className="text-muted-foreground font-body text-sm">
               IEEE WIE AG MITS Initiative
             </p>
